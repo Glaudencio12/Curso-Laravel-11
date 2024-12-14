@@ -1,22 +1,18 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+//CRIA UMA ROTA PARA O ARQUIVO INDEX.BLADE.PHP EM RESOURCES/VIEWS/ADMIN/USER RETORNANDO UM ARRAY DE INFORMAÇÕES
+//ARQUIVO ESSE CHAMADO PELO CONTROLLER USERCONTROLLER EM APP/HTTP/CONTROLLER/ADMIN
+Route::get('/users', [UserController::class, 'index']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
