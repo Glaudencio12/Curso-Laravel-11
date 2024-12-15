@@ -11,17 +11,28 @@
       <h1>Usuários cadastrados</h1>
 
       <table border="1">
-            <tr>
-                  <th>Nome</th>
-                  <th>email</th>
-            </tr>
-            <?php foreach ($user as $user){ ?>
+            <thead>
                   <tr>
-                        <td><?php echo htmlspecialchars($user->name); ?></td>
-                        <td><?php echo htmlspecialchars($user->email); ?></td>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Ações</th>
                   </tr>
-            <?php }; ?>
-      </tr>
+            </thead>
+            <tbody>
+                  @forelse ($users as $user)
+                        <tr>
+                              <td>{{ $user->name }}</td>
+                              <td>{{ $user->email }}</td>
+                              <td>--</td>
+                        </tr>
+                  @empty
+                        <tr>
+                              <td colspan="3">Nenhum usuário cadastrado</td>
+                        </tr>
+                  @endforelse
+            </tbody>
       </table>
+      {{$users->links()}} <!-- Link que direciona para as páginas -->
 </body>
+
 </html>

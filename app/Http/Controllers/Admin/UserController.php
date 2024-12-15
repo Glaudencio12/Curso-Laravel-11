@@ -12,8 +12,9 @@ class UserController extends Controller
     //APÓS CRIAR A FUNÇÃO, É RETORNADA UMA VIEW, QUE CORRESPONDE AO ARQUIVO INDEX.BLADE.PHP NA PASTA 
     //RESOURCES/VIEWS/ADMIN/USER
     public function index(){
-        $user = User::all(); //retorna todos os usuários cadastrados
+        $users =  User::paginate(10);  //Divide os cadastros por páginas. Cada página contém 10 cadastros
+        // User::all(); retorna todos os usuários cadastrados
         // $user = User::first(); retorna o primeiro usuário do banco de dados
-        return view('Admin.users.index', compact('user')); //retorna o arquivo index.blade.php
+        return view('Admin.users.index', compact('users')); //retorna o arquivo index.blade.php
     }
 }
